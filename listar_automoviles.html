@@ -1,0 +1,57 @@
+{% extends 'core/base.html' %}
+
+{% block contenido %}
+
+<center>
+<strong><h2><spann style="color:#a10d21;">LISTADO DE AUTOMOVILES</h2></strong>
+
+<br>
+<table>
+    
+    <tr>
+       
+       <th> Patente </th>
+       <th> Marca </th>
+       <th> Modelo </th>
+       <th> Año </th>
+    <th> Opciones </th>
+       
+    </tr>
+
+    {% for a in autos %}
+    
+    
+    <tr>
+    
+        <td>{{ a.Patente }}</td>
+        <td>{{ a.Marca.Nombre }}</td>
+        <td>{{ a.Modelo }}</td>
+        <td>{{ a.Anio }}</td>
+        <td>
+           
+            <a href="{% url 'eliminar_automovil' a.id %}">Eliminar</a>
+            <a href="{% url 'modificar_automovil' a.id %}">Modificar</a>
+           
+        </td>
+    </tr>
+    
+    
+    
+    {% endfor %}
+ 
+</table>
+</br>
+
+{% if messages  %}
+
+   {% for m in messages  %}
+
+   <div>{{ m }}</div>
+      
+   
+   {% endfor %}
+
+{% endif %}
+
+</center>
+{% endblock contenido %}
